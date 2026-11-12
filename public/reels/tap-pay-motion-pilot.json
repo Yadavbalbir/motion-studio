@@ -1,0 +1,87 @@
+{
+  "slug": "tap-pay-motion-pilot",
+  "title": "Tap & Pay motion pilot: card mein battery nahi?",
+  "topic": "Contactless card payments, NFC power, transaction proof and mobile wallet tokens",
+  "audience": "Curious Hinglish-speaking viewers who want a simple explanation of everyday payment technology",
+  "takeaway": "A passive contactless card has no battery, so the payment mystery is set up for the full NFC explanation.",
+  "format": "short",
+  "soundtrack": "ambient",
+  "voice": {
+    "model": "bulbul:v4-flash",
+    "speaker": "shubh_enhi_companion",
+    "speed": 1.5
+  },
+  "sources": [
+    {
+      "title": "NFC Forum: Technical Overview",
+      "url": "https://nfc-forum.org/learn/nfc-technology/",
+      "supports": "Short-range NFC communication, power transfer for battery-less operation, contactless card protocols and mobile card emulation. No exact range or charging-power claims in this reel."
+    }
+  ],
+  "publishing": {
+    "youtubeTitle": "Card Mein Battery Nahi! Phir Tap Se Payment Kaise? #shorts",
+    "instagramCaption": "Card mein battery nahi hoti… phir tap karte hi payment kaise? Part 2 mein card ke andar chalte hain. Original 3D motion graphics; illustrative card and terminal.",
+    "hashtags": [
+      "#TapToPay",
+      "#NFC",
+      "#HowTechWorks",
+      "#TechInHindi",
+      "#MotionGraphics"
+    ]
+  },
+  "review": {
+    "technical": false,
+    "pronunciation": false,
+    "visuals": false
+  },
+  "beats": [
+    {
+      "id": "battery-mystery",
+      "chapter": "THE EVERYDAY MYSTERY",
+      "title": "Card mein battery nahi.",
+      "speech": "Card में battery नहीं होती। फिर machine पर tap करते ही payment कैसे हो जाती है? चलो, एक coffee खरीदकर समझते हैं।",
+      "caption": "Card mein battery nahi hoti. Phir machine par tap karte hi payment kaise ho jaati hai? Chalo, ek coffee khareedkar samajhte hain.",
+      "captionSegments": [
+        {
+          "speech": "Card में battery नहीं होती।",
+          "caption": "Card mein battery nahi hoti."
+        },
+        {
+          "speech": "फिर machine पर tap करते ही payment कैसे हो जाती है?",
+          "caption": "Phir machine par tap karte hi payment kaise ho jaati hai?"
+        },
+        {
+          "speech": "चलो, एक coffee खरीदकर समझते हैं।",
+          "caption": "Chalo, ek coffee khareedkar samajhte hain."
+        }
+      ],
+      "seconds": 6,
+      "pauseAfter": 1.3,
+      "visual": "tap-motion"
+    },
+    {
+      "id": "one-coffee",
+      "chapter": "ONE COFFEE",
+      "title": "Coffee: Rs 200.",
+      "speech": "Cashier ने machine पर दो सौ रुपये डाले। आपने amount देखा और अपना contactless card पास लाए। अब अंदर क्या होता है?",
+      "caption": "Cashier ne machine par do sau rupaye daale. Aapne amount dekha aur apna contactless card paas laaye. Ab andar kya hota hai?",
+      "captionSegments": [
+        {
+          "speech": "Cashier ने machine पर दो सौ रुपये डाले।",
+          "caption": "Cashier ne machine par do sau rupaye daale."
+        },
+        {
+          "speech": "आपने amount देखा और अपना contactless card पास लाए।",
+          "caption": "Aapne amount dekha aur apna contactless card paas laaye."
+        },
+        {
+          "speech": "अब अंदर क्या होता है?",
+          "caption": "Ab andar kya hota hai?"
+        }
+      ],
+      "seconds": 9,
+      "pauseAfter": 3.1,
+      "visual": "tap-motion"
+    }
+  ]
+}

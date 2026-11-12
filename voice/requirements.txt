@@ -1,0 +1,9 @@
+# Python 3.11, used only for local forced caption alignment (voice/align.py).
+# PyTorch 2.2.2 retains macOS Intel wheel support.
+numpy==1.26.4
+numba==0.60.0
+torch==2.2.2
+torchaudio==2.2.2
+soundfile==0.13.1
+stable-ts==2.19.1
+openai-whisper==20250625

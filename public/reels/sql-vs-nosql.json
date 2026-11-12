@@ -1,0 +1,251 @@
+{
+  "slug": "sql-vs-nosql",
+  "title": "SQL vs NoSQL: kab kaunsa chunein?",
+  "topic": "Relational vs NoSQL databases and how to choose by data shape, query pattern and consistency",
+  "audience": "Hinglish-speaking developers and students learning system design",
+  "takeaway": "Pick by data shape, query pattern and consistency: SQL for related money data, NoSQL for flexible shapes or simple lookups at scale; SQL is a safe default.",
+  "format": "short",
+  "soundtrack": "ambient",
+  "voice": {
+    "model": "bulbul:v4-flash",
+    "speaker": "shubh_enhi_companion",
+    "speed": 1.5
+  },
+  "sources": [
+    {
+      "title": "PostgreSQL Documentation: Transactions",
+      "url": "https://www.postgresql.org/docs/current/tutorial-transactions.html",
+      "supports": "All-or-nothing transactions in a relational database (the order/payment example)."
+    },
+    {
+      "title": "PostgreSQL Documentation: JSON Types",
+      "url": "https://www.postgresql.org/docs/current/datatype-json.html",
+      "supports": "PostgreSQL stores and queries JSON/JSONB."
+    },
+    {
+      "title": "MongoDB Manual: Transactions",
+      "url": "https://www.mongodb.com/docs/manual/core/transactions/",
+      "supports": "Document model, single-document atomicity, and multi-document ACID transactions."
+    },
+    {
+      "title": "Redis Documentation",
+      "url": "https://redis.io/docs/latest/",
+      "supports": "Redis as an in-memory key-value data store. No latency numbers claimed."
+    },
+    {
+      "title": "AWS DynamoDB: NoSQL design",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-general-nosql-design.html",
+      "supports": "NoSQL schemas are designed around known access patterns; 'safe start' is presented as general guidance, not a rule."
+    }
+  ],
+  "publishing": {
+    "youtubeTitle": "SQL vs NoSQL: Kab Kaunsa Database? #shorts",
+    "instagramCaption": "SQL ya NoSQL? Ek food delivery app se samjho: orders, menu aur rider location ke liye kaunsa database. Original 3D motion graphics; illustrative data.",
+    "hashtags": [
+      "#SQL",
+      "#NoSQL",
+      "#SystemDesign",
+      "#Database",
+      "#TechInHindi"
+    ]
+  },
+  "review": {
+    "technical": false,
+    "pronunciation": false,
+    "visuals": false
+  },
+  "beats": [
+    {
+      "id": "wrong-pick",
+      "chapter": "THE CHOICE",
+      "title": "SQL ya NoSQL?",
+      "speech": "SQL या NoSQL? गलत database चुना, तो बाद में पूरा data migrate करना पड़ सकता है।",
+      "caption": "SQL ya NoSQL? Galat database chuna, toh baad mein poora data migrate karna pad sakta hai.",
+      "captionSegments": [
+        {
+          "speech": "SQL या NoSQL?",
+          "caption": "SQL ya NoSQL?"
+        },
+        {
+          "speech": "गलत database चुना, तो बाद में पूरा data migrate करना पड़ सकता है।",
+          "caption": "Galat database chuna, toh baad mein poora data migrate karna pad sakta hai."
+        }
+      ],
+      "seconds": 4,
+      "pauseAfter": 0.3,
+      "visual": "sql-motion"
+    },
+    {
+      "id": "one-app",
+      "chapter": "ONE APP, THREE DATA",
+      "title": "Food delivery app",
+      "speech": "एक food delivery app लेते हैं। इसमें तीन तरह का data है: orders, menu, और rider की live location।",
+      "caption": "Ek food delivery app lete hain. Isme teen tarah ka data hai: orders, menu, aur rider ki live location.",
+      "captionSegments": [
+        {
+          "speech": "एक food delivery app लेते हैं।",
+          "caption": "Ek food delivery app lete hain."
+        },
+        {
+          "speech": "इसमें तीन तरह का data है: orders, menu, और rider की live location।",
+          "caption": "Isme teen tarah ka data hai: orders, menu, aur rider ki live location."
+        }
+      ],
+      "seconds": 5,
+      "pauseAfter": 0.3,
+      "visual": "sql-motion"
+    },
+    {
+      "id": "orders-sql",
+      "chapter": "ORDERS → SQL",
+      "title": "Tables + fixed schema",
+      "speech": "Order और payment के लिए SQL. Data tables में, fixed schema के साथ। पैसा कटा, तो order भी बनना चाहिए। दोनों साथ, या दोनों नहीं। यही है ACID transaction।",
+      "caption": "Order aur payment ke liye SQL. Data tables mein, fixed schema ke saath. Paisa kata, toh order bhi banna chahiye. Dono saath, ya dono nahi. Yahi hai ACID transaction.",
+      "captionSegments": [
+        {
+          "speech": "Order और payment के लिए SQL.",
+          "caption": "Order aur payment ke liye SQL."
+        },
+        {
+          "speech": "Data tables में, fixed schema के साथ।",
+          "caption": "Data tables mein, fixed schema ke saath."
+        },
+        {
+          "speech": "पैसा कटा, तो order भी बनना चाहिए।",
+          "caption": "Paisa kata, toh order bhi banna chahiye."
+        },
+        {
+          "speech": "दोनों साथ, या दोनों नहीं।",
+          "caption": "Dono saath, ya dono nahi."
+        },
+        {
+          "speech": "यही है ACID transaction।",
+          "caption": "Yahi hai ACID transaction."
+        }
+      ],
+      "seconds": 8,
+      "pauseAfter": 0.3,
+      "visual": "sql-motion"
+    },
+    {
+      "id": "menu-document",
+      "chapter": "MENU → DOCUMENT",
+      "title": "Har item ka shape alag",
+      "speech": "Menu अलग है। Pizza के size होते हैं, biryani का spice level। हर item का shape अलग। MongoDB जैसा document database ऐसा flexible data आराम से रखता है।",
+      "caption": "Menu alag hai. Pizza ke size hote hain, biryani ka spice level. Har item ka shape alag. MongoDB jaisa document database aisa flexible data aaraam se rakhta hai.",
+      "captionSegments": [
+        {
+          "speech": "Menu अलग है।",
+          "caption": "Menu alag hai."
+        },
+        {
+          "speech": "Pizza के size होते हैं, biryani का spice level।",
+          "caption": "Pizza ke size hote hain, biryani ka spice level."
+        },
+        {
+          "speech": "हर item का shape अलग।",
+          "caption": "Har item ka shape alag."
+        },
+        {
+          "speech": "MongoDB जैसा document database ऐसा flexible data आराम से रखता है।",
+          "caption": "MongoDB jaisa document database aisa flexible data aaraam se rakhta hai."
+        }
+      ],
+      "seconds": 7,
+      "pauseAfter": 0.3,
+      "visual": "sql-motion"
+    },
+    {
+      "id": "rider-key-value",
+      "chapter": "RIDER → KEY-VALUE",
+      "title": "Location badalti rehti hai",
+      "speech": "Rider की location हर कुछ second में बदलती है। यहाँ simple key और value काफ़ी है। Redis जैसा in-memory key-value store इसे जल्दी read-write करता है।",
+      "caption": "Rider ki location har kuch second mein badalti hai. Yahan simple key aur value kaafi hai. Redis jaisa in-memory key-value store ise jaldi read-write karta hai.",
+      "captionSegments": [
+        {
+          "speech": "Rider की location हर कुछ second में बदलती है।",
+          "caption": "Rider ki location har kuch second mein badalti hai."
+        },
+        {
+          "speech": "यहाँ simple key और value काफ़ी है।",
+          "caption": "Yahan simple key aur value kaafi hai."
+        },
+        {
+          "speech": "Redis जैसा in-memory key-value store इसे जल्दी read-write करता है।",
+          "caption": "Redis jaisa in-memory key-value store ise jaldi read-write karta hai."
+        }
+      ],
+      "seconds": 7,
+      "pauseAfter": 0.3,
+      "visual": "sql-motion"
+    },
+    {
+      "id": "blurred-line",
+      "chapter": "THE NUANCE",
+      "title": "Line seedhi nahi",
+      "speech": "लेकिन line इतनी सीधी नहीं। आज PostgreSQL JSON रखता है, और MongoDB multi-document transactions देता है।",
+      "caption": "Lekin line itni seedhi nahi. Aaj PostgreSQL JSON rakhta hai, aur MongoDB multi-document transactions deta hai.",
+      "captionSegments": [
+        {
+          "speech": "लेकिन line इतनी सीधी नहीं।",
+          "caption": "Lekin line itni seedhi nahi."
+        },
+        {
+          "speech": "आज PostgreSQL JSON रखता है, और MongoDB multi-document transactions देता है।",
+          "caption": "Aaj PostgreSQL JSON rakhta hai, aur MongoDB multi-document transactions deta hai."
+        }
+      ],
+      "seconds": 5,
+      "pauseAfter": 0.3,
+      "visual": "sql-motion"
+    },
+    {
+      "id": "three-questions",
+      "chapter": "HOW TO PICK",
+      "title": "Teen sawaal",
+      "speech": "तो तीन सवाल पूछो: data का shape क्या है, query कैसी होगी, और consistency कितनी ज़रूरी है? Relationships और पैसा: SQL. बदलता shape या simple lookups बड़े scale पर: NoSQL. Doubt हो, तो ज़्यादातर apps के लिए SQL एक safe start है।",
+      "caption": "Toh teen sawaal poocho: data ka shape kya hai, query kaisi hogi, aur consistency kitni zaroori hai? Relationships aur paisa: SQL. Badalta shape ya simple lookups bade scale par: NoSQL. Doubt ho, toh zyaadatar apps ke liye SQL ek safe start hai.",
+      "captionSegments": [
+        {
+          "speech": "तो तीन सवाल पूछो: data का shape क्या है, query कैसी होगी, और consistency कितनी ज़रूरी है?",
+          "caption": "Toh teen sawaal poocho: data ka shape kya hai, query kaisi hogi, aur consistency kitni zaroori hai?"
+        },
+        {
+          "speech": "Relationships और पैसा: SQL.",
+          "caption": "Relationships aur paisa: SQL."
+        },
+        {
+          "speech": "बदलता shape या simple lookups बड़े scale पर: NoSQL.",
+          "caption": "Badalta shape ya simple lookups bade scale par: NoSQL."
+        },
+        {
+          "speech": "Doubt हो, तो ज़्यादातर apps के लिए SQL एक safe start है।",
+          "caption": "Doubt ho, toh zyaadatar apps ke liye SQL ek safe start hai."
+        }
+      ],
+      "seconds": 11,
+      "pauseAfter": 0.3,
+      "visual": "sql-motion"
+    },
+    {
+      "id": "your-app",
+      "chapter": "YOUR TURN",
+      "title": "Aapki app?",
+      "speech": "आपकी app कौन सा database use करती है? Comment करो, और ऐसे system design के लिए follow करो।",
+      "caption": "Aapki app kaun sa database use karti hai? Comment karo, aur aise system design ke liye follow karo.",
+      "captionSegments": [
+        {
+          "speech": "आपकी app कौन सा database use करती है?",
+          "caption": "Aapki app kaun sa database use karti hai?"
+        },
+        {
+          "speech": "Comment करो, और ऐसे system design के लिए follow करो।",
+          "caption": "Comment karo, aur aise system design ke liye follow karo."
+        }
+      ],
+      "seconds": 5,
+      "pauseAfter": 0.9,
+      "visual": "sql-motion"
+    }
+  ]
+}

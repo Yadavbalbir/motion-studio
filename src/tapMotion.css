@@ -1,0 +1,23 @@
+/* Tap & Pay pilot shots; shared motion styles live in src/motion/motion.css. */
+.motion-battery { flex-direction: row; gap: 28px; }
+.motion-battery svg { width: 250px; height: 117px; flex: none; }
+.motion-battery div { display: flex; flex-direction: column; align-items: flex-start; }
+.motion-battery strong { font: 700 92px/1.05 "Space Grotesk", sans-serif; letter-spacing: -4px; }
+.motion-stamp {
+  position: absolute;
+  right: 40px;
+  bottom: 18px;
+  padding: 6px 26px;
+  border: 7px solid #cd5137;
+  border-radius: 14px;
+  color: #cd5137;
+  font: 700 58px/1.1 "Space Grotesk", sans-serif;
+  letter-spacing: 6px;
+  background: #f3ead9cc;
+}
+.motion-tap strong { font: 700 210px/.9 "Space Grotesk", sans-serif; letter-spacing: -10px; }
+.motion-question { font: 400 230px/1 Georgia, serif; color: #c64a32; letter-spacing: -6px; }
+.motion-coffee strong { margin-top: 14px; font: italic 400 150px/1 Georgia, serif; letter-spacing: -5px; color: #202d32; }
+.motion-amount strong { display: inline-block; margin-top: 10px; font: 700 190px/1 "Space Grotesk", sans-serif; letter-spacing: -8px; }
+.motion-check p { margin: 26px 0 0; font: 600 42px/1.2 Inter, sans-serif; color: #34443f; }
+.motion-inside { font: 700 104px/1 "Space Grotesk", sans-serif; letter-spacing: -4px; color: #f3f0e4; }

@@ -1,0 +1,101 @@
+.reel.motion-reel { color: #202d32; background: #f5f0e5; --accent: #cd5137; overflow: hidden; }
+.motion-reel .preview-watermark { color: #7d786b; }
+.motion-canvas { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+.motion-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 85% 60% at 50% 45%, transparent 58%, #3b2a1226 100%),
+    linear-gradient(#f3ead9e6, #f3ead900 30%, #f3ead900 70%, #f3ead9d9 86%);
+  transition: none;
+}
+.motion-dark .motion-vignette {
+  background:
+    radial-gradient(ellipse 85% 60% at 50% 45%, transparent 50%, #00000066 100%),
+    linear-gradient(#0f2427e6, #0f242700 30%, #0f242700 70%, #0f2427d9 86%);
+}
+.motion-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .16;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .25 0 0 0 0 .18 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.motion-dark .motion-grain { mix-blend-mode: screen; opacity: .1; }
+.motion-kinetic {
+  position: absolute;
+  left: 70px;
+  top: 190px;
+  width: 940px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #202d32;
+  font-family: "Space Grotesk", sans-serif;
+}
+.motion-kinetic small, .motion-endcard small {
+  font: 600 30px/1.2 "Space Grotesk", sans-serif;
+  letter-spacing: 7px;
+  color: #cd5137;
+}
+.motion-pill {
+  display: inline-block;
+  margin-top: 26px;
+  padding: 16px 34px;
+  border-radius: 999px;
+  background: #247b69;
+  color: #f4fff6;
+  font: 700 38px/1.1 "Space Grotesk", sans-serif;
+  letter-spacing: 2px;
+  box-shadow: 0 14px 30px #1d4d4033;
+}
+.motion-word { display: block; white-space: nowrap; }
+.motion-letter { display: inline-block; white-space: pre; }
+.motion-endcard {
+  position: absolute;
+  left: 70px;
+  top: 170px;
+  width: 940px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #f3f0e4;
+}
+.motion-endcard small { color: #ffb27e; }
+.motion-endcard strong { margin-top: 14px; font: 700 100px/1.02 "Space Grotesk", sans-serif; letter-spacing: -4px; }
+.motion-endcard em { font: italic 400 112px/1 Georgia, serif; color: #ffb27e; letter-spacing: -3px; }
+.motion-endcard .motion-pill { background: #f3f0e4; color: #0f2427; }
+.motion-caption {
+  position: absolute;
+  left: 80px;
+  top: 1488px;
+  width: 920px;
+  height: 196px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 34px;
+  box-sizing: border-box;
+  border-radius: 34px;
+  background: #fbf6ecee;
+  box-shadow: 0 18px 40px #3b2a121f;
+}
+.motion-caption p {
+  margin: 0;
+  color: #24352f;
+  font: 600 44px/1.24 Inter, sans-serif;
+  letter-spacing: -.8px;
+  text-wrap: balance;
+  text-align: center;
+}
+.motion-caption-gap { opacity: 0; }
+.motion-progress { position: absolute; top: 1722px; left: 80px; width: 920px; height: 5px; border-radius: 3px; background: #0000001a; overflow: hidden; }
+.motion-progress i { display: block; height: 100%; background: #cd5137; }

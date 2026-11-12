@@ -1,0 +1,10 @@
+node_modules/
+.venv/
+__pycache__/
+public/generated/
+output/
+.env
+.env.*
+!.env.example
+.DS_Store
+.models/
