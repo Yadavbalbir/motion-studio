@@ -1,7 +1,16 @@
 {
-  "name": "explainer-reel-studio",
+  "name": "motion-studio",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yadavbalbir/motion-studio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Yadavbalbir/motion-studio/issues"
+  },
+  "homepage": "https://github.com/Yadavbalbir/motion-studio#readme",
   "type": "module",
   "engines": {
     "node": ">=22"

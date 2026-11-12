@@ -1,0 +1,17 @@
+name: Feature request
+description: Propose an improvement or a new visual family.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: What would this help contributors or reel creators do?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the change, alternatives and any relevant examples.
+    validations:
+      required: true

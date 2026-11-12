@@ -1,4 +1,6 @@
-# explainer-reel-studio
+# Motion Studio
+
+An open-source, topic-to-reel studio for cinematic engineering explainers.
 
 Give it a topic, such as **"Rate Limiting"**, and get a vertical reel for
 YouTube Shorts and Instagram Reels:
@@ -20,6 +22,13 @@ This repo supplies the engine, the guardrails and two reference reels:
 | `sql-vs-nosql` | ≈ 60 s | a full explainer: one example, four demos, a decision rule |
 
 ## Setup
+
+Clone the repository:
+
+```sh
+git clone https://github.com/Yadavbalbir/motion-studio.git
+cd motion-studio
+```
 
 Requirements: Node 22+, ffmpeg/ffprobe, Python 3.11, and a
 [Sarvam](https://www.sarvam.ai/) API key on free/trial credits.
@@ -126,3 +135,21 @@ Preview files have a `preview` prefix. Only a reviewed final render writes
 | Video | H.264, yuv420p, MP4 with fast start |
 | Audio | AAC, 48 kHz, two-pass loudness normalization to −16 LUFS / −1.5 dBTP |
 | Captions | Full spoken Roman Hinglish, locally aligned and burned in, plus SRT |
+
+## Contributing
+
+Contributions are welcome: bug fixes, new visual families, documentation,
+accessibility improvements and focused tests. See [CONTRIBUTING.md](CONTRIBUTING.md)
+for setup, pull request guidance and the reel production requirements.
+You can run the studio and automated checks without a Sarvam key; a key is
+needed only to generate narration.
+
+Use [GitHub issues](https://github.com/Yadavbalbir/motion-studio/issues) for
+bugs and feature proposals. Report vulnerabilities privately as described in
+[SECURITY.md](SECURITY.md).
+
+## License
+
+Motion Studio is licensed under the [MIT License](LICENSE).
+Third-party dependencies, fonts and services retain their own licenses and
+terms; the MIT license does not grant service access or voice credits.
