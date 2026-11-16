@@ -6,6 +6,9 @@ import { chromium } from "playwright";
 import { createServer } from "vite";
 import { ROOT } from "../../../../scripts/lib";
 
+// Headless Chromium on macOS otherwise draws WebGL on the CPU (SwiftShader), ~50x slower; use the Metal GPU.
+const GPU_ARGS = process.platform === "darwin" ? ["--use-angle=metal", "--enable-gpu", "--ignore-gpu-blocklist"] : [];
+
 const [slug, outdir, ...frames] = process.argv.slice(2);
 if (!slug || !outdir || !frames.length) throw new Error("Usage: stills.ts <slug> <outdir> <frame...>");
 await mkdir(outdir, { recursive: true });
@@ -13,12 +16,12 @@ const server = await createServer({ root: ROOT, configFile: false, server: { hos
 await server.listen();
 const address = server.httpServer?.address();
 if (!address || typeof address === "string") throw new Error("Preview server did not start.");
-const browser = await chromium.launch({ headless: true });
+const browser = await chromium.launch({ headless: true, args: GPU_ARGS });
 try {
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
   page.on("pageerror", (error) => console.error("pageerror", error.message));
   await page.goto(`http://127.0.0.1:${address.port}/?reel=${slug}&render=1`, { waitUntil: "networkidle" });
-  await page.waitForFunction(() => !!window.reelStudio, undefined, { timeout: 30000 });
+  await page.waitForFunction(() => !!window.reelStudio, undefined, { timeout: 90000 });
   await page.evaluate(() => document.fonts.ready);
   for (const value of frames.map(Number)) {
     await page.evaluate((frame) => window.reelStudio!.setFrame(frame), value);
