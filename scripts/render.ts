@@ -8,6 +8,9 @@ import { FPS, WIDTH, HEIGHT, assertPublishable, slugSchema } from "../src/model"
 import { ROOT, assertExport, generated, prepare, probe } from "./lib";
 import { assembleNarration } from "./audio";
 
+// Headless Chromium on macOS otherwise draws WebGL on the CPU (SwiftShader), ~50x slower; use the Metal GPU.
+const GPU_ARGS = process.platform === "darwin" ? ["--use-angle=metal", "--enable-gpu", "--ignore-gpu-blocklist"] : [];
+
 async function main() {
   const [rawSlug, ...flags] = process.argv.slice(2);
   const slug = slugSchema.parse(rawSlug);
@@ -34,12 +37,12 @@ async function main() {
     await server.listen();
     const address = server.httpServer?.address();
     if (!address || typeof address === "string") throw new Error("Preview server did not start.");
-    browser = await chromium.launch({ headless: true });
+    browser = await chromium.launch({ headless: true, args: GPU_ARGS });
     const page = await browser.newPage({ viewport: { width: WIDTH, height: HEIGHT }, deviceScaleFactor: draft ? 0.5 : 1 });
     const pageErrors: string[] = [];
     page.on("pageerror", (error) => pageErrors.push(error.message));
     await page.goto(`http://127.0.0.1:${address.port}/?reel=${slug}&render=1`, { waitUntil: "networkidle" });
-    await page.waitForFunction(() => !!window.reelStudio, undefined, { timeout: 30000 });
+    await page.waitForFunction(() => !!window.reelStudio, undefined, { timeout: 90000 });
     await page.evaluate(() => document.fonts.ready);
     for (const beat of timeline.beats) {
       const offsets = new Set([

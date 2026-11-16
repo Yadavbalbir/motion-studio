@@ -21,6 +21,7 @@ Reference implementation:
 | SFX synthesis + music ducking | `scripts/soundtrack.ts` (`sfx()`, `sfxLength`) |
 | Schema / frame registry | `src/model.ts` (`visual` enum), `src/Reel.tsx` (`frames` map) |
 | Overflow selectors | `src/main.tsx` (`[data-settled]` kinetic text) |
+| Script craft: hooks, POV structure, Hinglish voice, packaging | `script-craft.md` (this folder) |
 
 Always obey the project instructions and `README.md` first: Sarvam Shubh
 (free/trial credits only, local `atempo`, never double-apply speed), complete
@@ -31,12 +32,21 @@ no commit/push/publish without a separate request.
 ## Topic-only quickstart (defaults when the user gives just a topic)
 
 - **Format:** `short`, ≤ 60 s, Sarvam Shubh `bulbul:v4-flash` at speed 1.5,
-  8 beats, ≤ ~1,100 speech characters (≈ 21.5 chars/s at 1.5×), `soundtrack:
+  8 beats, ≤ ~1,100 speech characters (≈ 21.5 chars/s at 1.5×) and
+  ~180–200 caption words (Shubh at 1.5× ≈ 3.2–3.7 words/s; Latin-heavy
+  Hinglish runs longer than the character estimate), `soundtrack:
   "ambient"`. `public/reels/sql-vs-nosql.json` is the
   template for a 60-s reel; the pilot is the template for 15 s.
 - **Story shape (60 s):** hook problem (why it matters) → one concrete
   everyday example kept throughout → 3–4 "physical" demonstrations, one per
   concept → nuance/limitation → decision rule → comment + follow CTA.
+  The strongest shape so far is the **POV escalation** in `script-craft.md`:
+  a sourced real-world number as the hook, "aap engineer ho", and each fix
+  revealing the next problem ("Par ab…"), with a "final boss" re-hook.
+- **Write the script with `script-craft.md`:** 3 hooks from different
+  mechanisms, scored /10 (keep ≥ 7); series tag after the hook, never
+  before; English-heavy Hinglish; one comment question + "follow karo
+  <creator handle>" spoken at the end.
 - **Stop for approval once:** present the 8-beat script (Devanagari speech
   with English terms + Roman captions) and sources. Only after approval spend
   voice credits. If no Sarvam key is in the environment, ask the user to run
@@ -45,7 +55,9 @@ no commit/push/publish without a separate request.
   remind them to rotate it.
 - **Publishing text:** short and focused — title, a 2–3 line description
   (don't recap the video), CTA, max 5 Instagram hashtags; YouTube title with
-  `#shorts`.
+  `#shorts`. Offer the full package from `script-craft.md` → Packaging:
+  grid-safe thumbnail, caption with keyword-first opening, alt text, and a
+  pinned comment (a lead-magnet PDF only if it exists).
 
 ## Workflow
 
@@ -58,6 +70,11 @@ no commit/push/publish without a separate request.
    + filtered manifest + filtered `captions-aligned.json`, as the pilot did).
    Otherwise `npm run voice -- <slug> --trial-credits-confirmed`, then
    `npm run captions` / `npm run reel -- prepare <slug>`.
+   **Changing one voiced beat:** the pipeline stops with "Source cache
+   changed" by design. Move that beat's `<id>.sarvam.json`, `<id>.source.wav`
+   and `<id>.wav` into `public/generated/<slug>/audio-archive/<id>-v1/` (never
+   delete) and run voice again: only that beat costs a request, the rest are
+   reused and re-aligned.
 3. **New visual family.** Add `<topic>-motion` to the `visual` enum in
    `src/model.ts` and register its frame in the `frames` map in
    `src/Reel.tsx`. Start the reel with `npm run reel -- new <slug>` and
@@ -87,8 +104,12 @@ no commit/push/publish without a separate request.
 7. **Tests + docs.** Add `tests/<topic>-motion.test.ts`: voice/review flags,
    duration bounds, strictly ordered cues, end-card hold ≥ 1.5 s, SFX inside
    the timeline. Run `npm run check`.
-8. **Render + verify.** `npm run render -- <slug> --preview` (takes several
-   minutes; a 60-s reel takes ~45 min — run it async and wait). Verify with ffprobe:
+8. **Render + verify.** `npm run render -- <slug> --preview` (run it async
+   and wait). With the Metal GPU flags in `render.ts` a 60-s reel renders in
+   ~12 min on a MacBook; if it crawls (seconds per frame), WebGL has fallen
+   back to SwiftShader (CPU) — check the renderer string. On macOS run long
+   renders as `caffeinate -dims npm run render …`: a sleeping Mac freezes the
+   render silently. Verify with ffprobe:
    1080×1920, 30 fps, H.264 + AAC, expected duration; `ebur128` ≈ −16 LUFS.
    Extract 6 frames from the *exported MP4* into a sheet and inspect it.
 9. **Deliver** with `publish_chat_update` (video attachment). Attachments
@@ -152,6 +173,28 @@ no commit/push/publish without a separate request.
   hook / Follow karo →"). Longer explainers keep one example object
   throughout and add reading pauses per README rules.
 
+**Restraint (from creator review: "clumsy and congested")**
+- One idea on screen at a time. If a frame needs a second look to find the
+  subject, remove something.
+- Particles and request tokens appear only in short bursts at the moment
+  they explain (the rush, one load-balancer fan-out), never streaming under
+  the whole reel.
+- Props, cables, outlines and notes leave when their beat ends. Background
+  set dressing (a passing train, a clock board) belongs to the hook and the
+  callback only.
+- Labels that carry the concept (shard ranges, "PRIMARY / REPLICA") must stay
+  readable in wide shots: float them as camera-facing tags above the object
+  instead of printing them on faces that get occluded.
+- Show routing with one hero object (a single ticket "TRAIN 12951" flying to
+  its shard) rather than many.
+- Series tag = a full-screen takeover card (bands wipe in, big day number,
+  N of 100 progress dots, handle), lifting away as the next beat starts.
+- End on a creator-profile card: the comment question, avatar, handle,
+  one-line bio and a Follow button that pulses on the spoken "follow".
+  Avatar from `public/brand/avatar.png` (ask the creator for the original
+  file); keep the image mounted (hidden) from frame 0 so it is loaded before
+  the end card is screenshotted.
+
 ## Going beyond the pilot
 
 Pick the ones that serve the story, and verify each with stills:
@@ -168,6 +211,23 @@ Pick the ones that serve the story, and verify each with stills:
   so a "Part 2" feels continuous.
 
 ## Pitfalls already solved
+- Headless Chromium on macOS renders WebGL with SwiftShader (CPU), ~10–20 s
+  per frame for these scenes. `render.ts` and `stills.ts` now launch with
+  `--use-angle=metal --enable-gpu --ignore-gpu-blocklist` (~0.2 s/frame).
+- After an interrupted render, Vite's cold dependency build can take longer
+  than the old 30 s page wait; the wait is now 90 s.
+- One aligned caption can hold two sentences ("Site wapas up. Par ab
+  database…"), so two cues land on the same frame. In `cueAt`, offset by the
+  words' position inside the caption: `start + indexOf(words) / text.length *
+  (end - start)`.
+- Silent previews show a whole beat's caption and fail the overflow check on
+  long beats. Show one `captionSegment` at a time, weighted by its length.
+- Billboards (`lookAt` / camera quaternion) must use this frame's camera:
+  set the camera pose at the top of `apply(t)`, or seeking renders
+  differently from playback.
+- Review flags are set only after the creator watches the narrated preview;
+  per-reel tests should check the review keys exist, not that they are false,
+  or the approved reel fails `npm run check`.
 - Camera too close / letters stacking vertically: use `shot()` width framing
   and wrap letters in `.motion-word`.
 - Overflow failures from in-flight transforms: check only `[data-settled]`.

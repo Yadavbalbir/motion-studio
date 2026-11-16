@@ -15,6 +15,9 @@ When asked for a reel without a topic, choose a useful engineering topic.
 - Script: write `speech` in Devanagari with English technical terms, and full
   Roman-Hinglish `captionSegments`, aligned locally. Never replace the spoken
   transcript with summary captions.
+  Write the script with `.github/skills/motion-reel/script-craft.md`: three
+  scored hooks, English-heavy Hinglish, the series tag after the hook, and
+  one spoken comment question plus the creator's follow line at the end.
 - Approval: get one approval of the script and sources before spending voice
   credits.
 - Facts: check claims against authoritative sources and include limitations.
