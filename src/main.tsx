@@ -59,7 +59,7 @@ function App({ timeline }: { timeline: Timeline }) {
         flushSync(() => setFrame(Math.max(0, Math.min(timeline.totalFrames - 1, Math.floor(value)))));
       },
       overflow() {
-        return [...document.querySelectorAll<HTMLElement>(".motion-kinetic[data-settled], .motion-caption, .motion-endcard[data-settled]")]
+        return [...document.querySelectorAll<HTMLElement>(".motion-kinetic[data-settled], .motion-caption, .motion-endcard[data-settled], .motion-newshook[data-settled]")]
           .filter((element) => element.scrollWidth > element.clientWidth + 1 || element.scrollHeight > element.clientHeight + 1)
           .map((element) => element.className || element.tagName);
       },

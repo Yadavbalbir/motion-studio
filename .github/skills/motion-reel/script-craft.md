@@ -74,6 +74,46 @@ ends on "Par ab…", so every line opens the next question.
 Other shapes (same hook and ending rules): Myth-bust, A vs B, Behind the
 scenes ("aap tap karte ho, peeche 3 hops"), Real incident (sourced only).
 
+## News-jack and the frame-0 template
+
+Patterns seen across top Indian 3D-explainer channels (different niches,
+same mechanics). Borrow the mechanics, never another creator's lines, art or
+branding.
+
+**Topic: ride this week's news.** Pick, from the series plan, the concept that
+explains what India is talking about now: an outage (UPI down → retries and
+idempotency), a sale crash (Big Billion Days → caching and queues), a
+streaming record (IPL → CDNs), a festival rush (Tatkal → scaling). The
+audience already cares before second 1. Verify the event from an
+authoritative source the day you write.
+
+**Frame 0 is the climax, not the setup.** Start the scene in its most
+dramatic state (the server already falling, the train already on fire), then
+explain how we got there. Lay `NewsHook` (`src/motion/NewsHook.tsx`) over it:
+a red title bar of 2–4 words the viewer already knows ("Tatkal Rush",
+"UPI Down"), one emoji, and a round proof inset: a sourced number
+(`{ stat, label, credit }`) or a photo the creator has rights to
+(`{ src, alt, credit }`). Use `at={-0.4}` so it is fully on screen at frame 0.
+
+**First spoken line, five shapes** (all must be true and sourced):
+
+| Shape | System design example |
+|---|---|
+| Superlative + number | "India ka sabse bada payment day… ek din mein ___ crore UPI transactions." |
+| A person + a specific | "Ek engineer ne sirf ek line change ki… aur poora app down." (a real, sourced incident) |
+| Shared memory | "Yaad hai, pichhli sale mein app khulte hi crash ho gaya tha?" |
+| Outrage reaction | "UPI phir se down? Kya tamasha hai bhai…" |
+| Buzzword repeat | "Kafka… Kafka toh sab use kar rahe hain… par kyun?" |
+
+Drop in mid-sentence, land the specific (number, name, age, date) by second
+3, and let captions trail with "…" at cliffhangers.
+
+**Title:** "[2–4 word topic] (3D) · Day N/100", with 🤯 only when the story is
+truly shocking. **Captions:** for news-jack reels, the opt-in
+`motion-caption-bold` style (white, black outline, no panel) reads like
+the platform-native look. **Face:** a creator reacting on camera in the lower
+third builds trust; if the creator records it, plan the 3D for the top 60 %.
+
 ## Lines
 
 - One breath per line: 4–15 words, ≤ ~4 s spoken. Vary length; a 3-word line
