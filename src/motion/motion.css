@@ -115,4 +115,4 @@
 
 /* Opt-in bold captions: white with a black outline, no panel (add .motion-caption-bold to .motion-caption). */
 .motion-caption.motion-caption-bold { background: none; box-shadow: none; }
-.motion-caption.motion-caption-bold p { color: #fff; font: 800 54px/1.18 Inter, sans-serif; letter-spacing: -.5px; -webkit-text-stroke: 10px #000; paint-order: stroke fill; }
+.motion-caption.motion-caption-bold p { color: #fff; font: 800 52px/1.2 Inter, sans-serif; letter-spacing: .5px; word-spacing: 10px; -webkit-text-stroke: 9px #000; paint-order: stroke fill; }
