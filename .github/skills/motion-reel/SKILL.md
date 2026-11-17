@@ -22,6 +22,7 @@ Reference implementation:
 | Schema / frame registry | `src/model.ts` (`visual` enum), `src/Reel.tsx` (`frames` map) |
 | Overflow selectors | `src/main.tsx` (`[data-settled]` kinetic text) |
 | Script craft: hooks, POV structure, Hinglish voice, packaging | `script-craft.md` (this folder) |
+| Frame-0 news hook (title bar, emoji, proof inset) + bold captions | `src/motion/NewsHook.tsx`, `.motion-caption-bold` in `src/motion/motion.css` |
 
 Always obey the project instructions and `README.md` first: Sarvam Shubh
 (free/trial credits only, local `atempo`, never double-apply speed), complete
@@ -172,6 +173,14 @@ no commit/push/publish without a separate request.
   "physical" action → curiosity reveal → end card (≥ 1.5 s, "PART 2 /
   hook / Follow karo →"). Longer explainers keep one example object
   throughout and add reading pauses per README rules.
+
+**Frame 0**
+- Open on the climax state of the scene, never a fade-up or setup; explain
+  backwards from there.
+- For news-jack reels, add `NewsHook` at `at={-0.4}` with a 2–4 word title
+  the viewer already knows, one emoji, and a sourced proof inset. Keep it
+  clear of the scene's subject (default bar centre y = 640, under the type
+  zone); it is overflow-checked once settled.
 
 **Restraint (from creator review: "clumsy and congested")**
 - One idea on screen at a time. If a frame needs a second look to find the
